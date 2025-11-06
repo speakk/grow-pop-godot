@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://kp8kma5s32ma"]
+[gd_scene load_steps=5 format=3 uid="uid://kp8kma5s32ma"]
 
 [ext_resource type="PackedScene" uid="uid://c5y1khlcwpnmk" path="res://assets/models/farm_plot.blend" id="1_r8nw5"]
 [ext_resource type="Script" uid="uid://dhv13s4elxff4" path="res://plot.gd" id="1_ticr0"]
 
-[node name="Plot" type="Node3D" unique_id=2129505315]
-transform = Transform3D(1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0.018722534, 0, 0.00025495887)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ticr0"]
+size = Vector3(1.1, 0.2, 1.1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ticr0"]
+inner_radius = 0.9
+rings = 4
+ring_segments = 6
+
+[node name="Plot" type="Node3D" unique_id=2129505315 node_paths=PackedStringArray("hover_mesh")]
 script = ExtResource("1_ticr0")
+hover_mesh = NodePath("HoverMesh")
 
 [node name="farm_plot" parent="." unique_id=1654039303 instance=ExtResource("1_r8nw5")]
+transform = Transform3D(1.3801541, 0, 0, 0, 1.2, 0, 0, 0, 1.3801541, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1869330637]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=607265658]
+shape = SubResource("BoxShape3D_ticr0")
+
+[node name="HoverMesh" type="MeshInstance3D" parent="." unique_id=127262089]
+transform = Transform3D(0.60710675, 0, 0.60710675, 0, 1, 0, -0.60710675, 0, 0.60710675, 0, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_ticr0")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]
