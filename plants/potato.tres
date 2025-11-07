@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Plant" load_steps=9 format=3 uid="uid://difntp82fr8dk"]
+
+[ext_resource type="Script" uid="uid://4jpog204us3c" path="res://growth_stage.gd" id="1_hb4kx"]
+[ext_resource type="Script" uid="uid://djn45xf0tbglf" path="res://plant.gd" id="2_o43xr"]
+[ext_resource type="PackedScene" uid="uid://bixhtyrioc70i" path="res://assets/models/plants/potato_1.blend" id="2_vqqfg"]
+[ext_resource type="PackedScene" uid="uid://c1begy6tfpitx" path="res://assets/models/plants/potato_2.blend" id="3_wyt1y"]
+[ext_resource type="PackedScene" uid="uid://dn6ucdyd7505e" path="res://assets/models/plants/potato_3.blend" id="4_u7a6l"]
+
+[sub_resource type="Resource" id="Resource_57dd0"]
+script = ExtResource("1_hb4kx")
+scene = ExtResource("2_vqqfg")
+metadata/_custom_type_script = "uid://4jpog204us3c"
+
+[sub_resource type="Resource" id="Resource_sj5xm"]
+script = ExtResource("1_hb4kx")
+scene = ExtResource("3_wyt1y")
+metadata/_custom_type_script = "uid://4jpog204us3c"
+
+[sub_resource type="Resource" id="Resource_n8t8r"]
+script = ExtResource("1_hb4kx")
+scene = ExtResource("4_u7a6l")
+metadata/_custom_type_script = "uid://4jpog204us3c"
+
+[resource]
+script = ExtResource("2_o43xr")
+plant_name = "Potato"
+growth_stages = Array[ExtResource("1_hb4kx")]([SubResource("Resource_57dd0"), SubResource("Resource_sj5xm"), SubResource("Resource_n8t8r")])
+spread_chance = 0.2
+metadata/_custom_type_script = "uid://djn45xf0tbglf"

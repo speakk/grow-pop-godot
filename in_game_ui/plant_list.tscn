@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://jekspltxusij"]
+
+[ext_resource type="Script" uid="uid://pghrfyoxslax" path="res://in_game_ui/plant_list.gd" id="1_y3sc5"]
+
+[node name="PlantList" type="ItemList" unique_id=786901242]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_y3sc5")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]
