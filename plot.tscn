@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://kp8kma5s32ma"]
+[gd_scene load_steps=5 format=3 uid="uid://kp8kma5s32ma"]
 
 [ext_resource type="PackedScene" uid="uid://c5y1khlcwpnmk" path="res://assets/models/farm_plot.blend" id="1_r8nw5"]
 [ext_resource type="Script" uid="uid://dhv13s4elxff4" path="res://plot.gd" id="1_ticr0"]
-[ext_resource type="PackedScene" uid="uid://c0q0sx4um0vjv" path="res://PlantInstance.tscn" id="2_ctcuh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ticr0"]
 size = Vector3(0.9696045, 0.2, 0.98742676)
@@ -17,7 +16,6 @@ script = ExtResource("1_ticr0")
 hover_mesh = NodePath("HoverMesh")
 plant_preview_container = NodePath("PlantPreviewContainer")
 plant_container = NodePath("PlantContainer")
-plant_instance = ExtResource("2_ctcuh")
 
 [node name="farm_plot" parent="." unique_id=1654039303 instance=ExtResource("1_r8nw5")]
 transform = Transform3D(1.3801541, 0, 0, 0, 1.2, 0, 0, 0, 1.3801541, 0, 0, 0)

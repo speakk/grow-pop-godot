@@ -50,6 +50,9 @@ func grow():
 				if _turns_until_delete_after_spoilt:
 					queue_free()
 
+func is_mature() -> bool:
+	return _matured
+
 func spoil():
 	for child in current_scene_container.get_children():
 		child.queue_free()
@@ -58,3 +61,9 @@ func spoil():
 	spoilt_scene.scale = Vector3.ONE * 0.3
 	current_scene_container.add_child(spoilt_scene)
 	_spoiled = true
+
+func harvest():
+	queue_free()
+	
+func get_reward():
+	return _current_plant.get_reward()

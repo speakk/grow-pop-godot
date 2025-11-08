@@ -11,8 +11,13 @@ class_name Plant extends Resource
 @export_range(0.0, 1.0) var price_modifier: float = 0.1
 @export_range(1, 5) var tier: int = 1
 
+@export var reward_multiplier: float = 2.0
+
 @export_range(1, 4) var turns_until_spoiled: int = 4
 
 const global_price_scaler: float = 20.0
 func get_price() -> int:
 	return int(float(tier) * price_modifier * global_price_scaler)
+
+func get_reward() -> int:
+	return int(get_price() * reward_multiplier)

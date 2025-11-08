@@ -4,7 +4,7 @@ class_name Plot extends Node3D
 @export var plant_preview_container: Node3D
 @export var plant_container: Node3D
 
-@export var plant_instance: PackedScene
+@export var PLANT_INSTANCE: PackedScene = preload("res://PlantInstance.tscn")
 
 var _current_selected_plant: Plant = null
 
@@ -17,10 +17,16 @@ func can_plant() -> bool:
 	return plant_container.get_child_count() == 0
 
 func plant(plant: Plant) -> void:
-	var plantInstance := plant_instance.instantiate() as PlantInstance
+	var plantInstance := PLANT_INSTANCE.instantiate() as PlantInstance
 	plant_container.add_child(plantInstance)
 	plantInstance.set_plant(plant)
 	print("Planted")
+
+func get_current_plant() -> PlantInstance:
+	if plant_container.get_child_count() > 0:
+		return plant_container.get_child(0)
+	else:
+		return null
 
 func handle_next_turn_start() -> void:
 	try_to_grow_plant()
@@ -54,9 +60,12 @@ func handle_current_selected_plant_changed(plant: Plant):
 	plant_preview_container.add_child(new_plant_scene)
 	_current_selected_plant = plant
 	
-	
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == 1:
-			SignalBus.attempt_to_plant.emit(_current_selected_plant, self)
-			
+		if event.button_index == 1 and event.pressed:
+			var current_plant := get_current_plant()
+			if current_plant:
+				if current_plant.is_mature():
+					SignalBus.player_actions.attempt_to_harvest.emit(self)
+			elif can_plant():
+				SignalBus.player_actions.attempt_to_plant.emit(_current_selected_plant, self)
