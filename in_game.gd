@@ -9,6 +9,12 @@ var available_plants: Array[Plant]:
 
 @export var turn_timer: Timer
 
+var _is_game_over := false:
+	set(value):
+		_is_game_over = value
+		turn_timer.stop()
+		$GameOverUI.show()
+
 var _current_selected_plant: Plant = null:
 	set(value):
 		_current_selected_plant = value
@@ -34,4 +40,4 @@ func _on_turn_timer_timeout() -> void:
 func _check_lose_condition():
 	if player_resources.gold == 0 and \
 		get_tree().get_nodes_in_group("plant_instances").is_empty():
-		print("Lost!")
+		_is_game_over = true

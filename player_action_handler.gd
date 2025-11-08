@@ -7,6 +7,8 @@ func _ready() -> void:
 	SignalBus.player_actions.attempt_to_harvest.connect(handle_attempt_to_harvest)
 
 func handle_attempt_to_plant(plant: Plant, plot: Plot):
+	if !plant: return
+	
 	if player_resources.gold < plant.get_price():
 		# TODO: Signal that it failed
 		return

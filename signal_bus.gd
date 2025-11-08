@@ -9,6 +9,8 @@ signal next_turn_start
 var player_resources: PlayerResourceSignals = PlayerResourceSignals.new()
 var player_actions: PlayerActionSignals = PlayerActionSignals.new()
 
+signal new_game_requested
+
 class PlayerResourceSignals:
 	signal gold_changed(old_amount: int, new_amount: int)
 
