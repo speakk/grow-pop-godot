@@ -45,8 +45,9 @@ albedo_texture = SubResource("NoiseTexture2D_h2yge")
 material = SubResource("StandardMaterial3D_1bvp3")
 size = Vector2(100, 100)
 
-[node name="InGame" type="Node3D" unique_id=1135904850]
+[node name="InGame" type="Node3D" unique_id=1135904850 node_paths=PackedStringArray("turn_timer")]
 script = ExtResource("1_nvoy2")
+turn_timer = NodePath("TurnTimer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1774615528]
 environment = SubResource("Environment_ig7tw")
@@ -154,7 +155,8 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 101.0
 
-[node name="Timer" type="Timer" parent="." unique_id=2114133274]
+[node name="TurnTimer" type="Timer" parent="." unique_id=2114133274]
 
 [connection signal="available_plants_changed" from="." to="UI/PlantList" method="_on_in_game_available_plants_changed"]
 [connection signal="plant_selected" from="UI/PlantList" to="." method="_on_plant_list_plant_selected"]
+[connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]

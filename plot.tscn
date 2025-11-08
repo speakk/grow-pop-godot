@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0q0sx4um0vjv" path="res://PlantInstance.tscn" id="2_ctcuh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ticr0"]
-size = Vector3(1.1, 0.2, 1.1)
+size = Vector3(0.9696045, 0.2, 0.98742676)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ticr0"]
 inner_radius = 0.9
@@ -25,6 +25,7 @@ transform = Transform3D(1.3801541, 0, 0, 0, 1.2, 0, 0, 0, 1.3801541, 0, 0, 0)
 [node name="Area3D" type="Area3D" parent="." unique_id=1869330637]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=607265658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0036498904, 0, 0.002307117)
 shape = SubResource("BoxShape3D_ticr0")
 
 [node name="HoverMesh" type="MeshInstance3D" parent="." unique_id=127262089]

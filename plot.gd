@@ -11,6 +11,7 @@ var _current_selected_plant: Plant = null
 func _ready() -> void:
 	SignalBus.current_selected_plant_changed.connect(handle_current_selected_plant_changed)
 	SignalBus.attempt_to_plant.connect(attempt_to_plant)
+	SignalBus.next_turn_start.connect(handle_next_turn_start)
 	
 func can_plant() -> bool:
 	# TODO: Check status (tilled?)
@@ -26,6 +27,20 @@ func attempt_to_plant(plant: Plant, plot: Plot) -> void:
 	plant_container.add_child(plantInstance)
 	plantInstance.set_plant(plant)
 	print("Planted")
+
+func handle_next_turn_start() -> void:
+	try_to_grow_plant()
+
+func try_to_grow_plant() -> void:
+	if plant_container.get_child_count() == 0:
+		return
+		
+	var plant_instance := plant_container.get_child(0) as PlantInstance
+	if has_growth_conditions():
+		plant_instance.grow()
+
+func has_growth_conditions() -> bool:
+	return true
 
 func _on_area_3d_mouse_entered() -> void:
 	hover_mesh.show()
