@@ -10,19 +10,13 @@ var _current_selected_plant: Plant = null
 
 func _ready() -> void:
 	SignalBus.current_selected_plant_changed.connect(handle_current_selected_plant_changed)
-	SignalBus.attempt_to_plant.connect(attempt_to_plant)
 	SignalBus.next_turn_start.connect(handle_next_turn_start)
 	
 func can_plant() -> bool:
 	# TODO: Check status (tilled?)
 	return plant_container.get_child_count() == 0
 
-func attempt_to_plant(plant: Plant, plot: Plot) -> void:
-	if plot != self or !can_plant():
-		# Plant not successful
-		# TODO: Emit signal to indicate that it wasn't
-		return
-	
+func plant(plant: Plant) -> void:
 	var plantInstance := plant_instance.instantiate() as PlantInstance
 	plant_container.add_child(plantInstance)
 	plantInstance.set_plant(plant)
