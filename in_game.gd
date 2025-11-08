@@ -1,9 +1,11 @@
 class_name InGame extends Node3D
 
-var available_plants: Array[Plant] = [preload("res://plants/potato.tres")]
-signal available_plants_changed(available_plants: Array[Plant])
+var available_plants: Array[Plant]:
+	set(value):
+		available_plants = value
+		SignalBus.available_plants_changed.emit(available_plants)
 
-var player_resources: PlayerResources
+@export var player_resources: PlayerResources
 
 @export var turn_timer: Timer
 
@@ -13,8 +15,7 @@ var _current_selected_plant: Plant = null:
 		SignalBus.current_selected_plant_changed.emit(value)
 
 func _ready() -> void:
-	available_plants_changed.emit(available_plants)
-	player_resources = PlayerResources.new_connected(SignalBus)
+	player_resources.connect_signal_bus(SignalBus)
 	player_resources.initialize_start_game_resources()
 	start_game()
 
@@ -23,6 +24,7 @@ func _on_plant_list_plant_selected(plant: Plant) -> void:
 	
 func start_game():
 	SignalBus.game_start.emit()
+	available_plants = [preload("res://plants/potato.tres")]
 	turn_timer.start()
 
 func _on_turn_timer_timeout() -> void:

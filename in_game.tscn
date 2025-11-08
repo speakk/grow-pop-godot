@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://blwxkirithfm5"]
+[gd_scene load_steps=21 format=3 uid="uid://blwxkirithfm5"]
 
 [ext_resource type="PackedScene" uid="uid://dxqf1q2tbm0g6" path="res://plot_grid.tscn" id="1_8cs12"]
 [ext_resource type="Script" uid="uid://bjgohq03vprob" path="res://in_game.gd" id="1_nvoy2"]
@@ -9,6 +9,8 @@
 [ext_resource type="LabelSettings" uid="uid://dh00kuqhiwhlf" path="res://in_game_ui/thick_label.tres" id="7_aud66"]
 [ext_resource type="PackedScene" uid="uid://jekspltxusij" path="res://in_game_ui/plant_list.tscn" id="7_bjxrw"]
 [ext_resource type="PackedScene" uid="uid://dw3bvdi2mjexj" path="res://in_game_ui/resources_display.tscn" id="7_e5igo"]
+[ext_resource type="Script" uid="uid://c4eha4xtvsdt5" path="res://player_resources.gd" id="10_e5igo"]
+[ext_resource type="Script" uid="uid://coqeceooiqtoq" path="res://player_action_handler.gd" id="11_6cqls"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ig7tw"]
 
@@ -47,8 +49,9 @@ albedo_texture = SubResource("NoiseTexture2D_h2yge")
 material = SubResource("StandardMaterial3D_1bvp3")
 size = Vector2(100, 100)
 
-[node name="InGame" type="Node3D" unique_id=1135904850 node_paths=PackedStringArray("turn_timer")]
+[node name="InGame" type="Node3D" unique_id=1135904850 node_paths=PackedStringArray("player_resources", "turn_timer")]
 script = ExtResource("1_nvoy2")
+player_resources = NodePath("PlayerResources")
 turn_timer = NodePath("TurnTimer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1774615528]
@@ -186,6 +189,13 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="TurnTimer" type="Timer" parent="." unique_id=2114133274]
+
+[node name="PlayerResources" type="Node" parent="." unique_id=1907158032]
+script = ExtResource("10_e5igo")
+
+[node name="PlayerActionHandler" type="Node" parent="." unique_id=671668340 node_paths=PackedStringArray("player_resources")]
+script = ExtResource("11_6cqls")
+player_resources = NodePath("../PlayerResources")
 
 [connection signal="plant_selected" from="UI/MarginContainer/VBoxContainer/PlantList" to="." method="_on_plant_list_plant_selected"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
