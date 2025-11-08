@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0q0sx4um0vjv"]
+
+[ext_resource type="Script" uid="uid://dawkmujq6q3g8" path="res://plant_instance.gd" id="1_ooofy"]
+
+[node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container")]
+script = ExtResource("1_ooofy")
+current_scene_container = NodePath("CurrentSceneContainer")
+
+[node name="CurrentSceneContainer" type="Node3D" parent="." unique_id=569434203]

@@ -154,5 +154,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 101.0
 
+[node name="Timer" type="Timer" parent="." unique_id=2114133274]
+
 [connection signal="available_plants_changed" from="." to="UI/PlantList" method="_on_in_game_available_plants_changed"]
 [connection signal="plant_selected" from="UI/PlantList" to="." method="_on_plant_list_plant_selected"]

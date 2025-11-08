@@ -7,6 +7,7 @@ var current_selected_plant: Plant = null
 
 func _ready() -> void:
 	available_plants_changed.emit(available_plants)
+	SignalBus.game_start.emit()
 
 func _on_plant_list_plant_selected(plant: Plant) -> void:
 	current_selected_plant = plant
