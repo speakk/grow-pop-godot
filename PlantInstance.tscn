@@ -1,9 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0q0sx4um0vjv"]
+[gd_scene load_steps=5 format=3 uid="uid://c0q0sx4um0vjv"]
 
 [ext_resource type="Script" uid="uid://dawkmujq6q3g8" path="res://plant_instance.gd" id="1_ooofy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ooofy"]
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooofy"]
+emission_enabled = true
+emission = Color(0.46898943, 0.9137255, 0.16079347, 1)
+emission_energy_multiplier = 8.86
+
+[sub_resource type="BoxMesh" id="BoxMesh_lr7tw"]
+material = SubResource("StandardMaterial3D_ooofy")
+size = Vector3(0.06, 0.06, 0.06)
 
 [node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container")]
 script = ExtResource("1_ooofy")
 current_scene_container = NodePath("CurrentSceneContainer")
 
 [node name="CurrentSceneContainer" type="Node3D" parent="." unique_id=569434203]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1134695131]
+emitting = false
+amount = 40
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ooofy")
+draw_pass_1 = SubResource("BoxMesh_lr7tw")

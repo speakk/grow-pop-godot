@@ -35,9 +35,11 @@ func grow():
 	if _growth_stage_index + 1 < _current_plant.growth_stages.size():
 		_growth_stage_index += 1
 		update_current_scene()
-	else:
+	
+	if _growth_stage_index + 1 >= _current_plant.growth_stages.size():
 		if not _matured:
 			_matured = true
+			$GPUParticles3D.emitting = true
 		
 		_turns_until_spoiled -= 1
 		if _turns_until_spoiled <= 0:
