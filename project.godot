@@ -22,3 +22,7 @@ SignalBus="*res://signal_bus.gd"
 [dotnet]
 
 project/assembly_name="GrowPop"
+
+[gui]
+
+theme/custom="uid://birxdig45a404"

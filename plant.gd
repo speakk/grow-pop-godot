@@ -7,3 +7,10 @@ class_name Plant extends Resource
 @export var growth_stages: Array[GrowthStage]
 
 @export_range(0.0, 1.0) var spread_chance: float = 0.0
+
+@export_range(0.0, 1.0) var price_modifier: float = 0.1
+@export_range(1, 5) var tier: int = 1
+
+const global_price_scaler: float = 20.0
+func get_price() -> int:
+	return int(float(tier) * price_modifier * global_price_scaler)

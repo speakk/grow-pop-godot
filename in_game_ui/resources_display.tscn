@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw3bvdi2mjexj"]
+
+[ext_resource type="LabelSettings" uid="uid://dh00kuqhiwhlf" path="res://in_game_ui/thick_label.tres" id="1_018s2"]
+[ext_resource type="Script" uid="uid://dbqcjt5qogyum" path="res://in_game_ui/resources_display.gd" id="1_ufym4"]
+
+[sub_resource type="Gradient" id="Gradient_018s2"]
+interpolation_mode = 1
+colors = PackedColorArray(0.8828125, 0.75562435, 0.09423183, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ufym4"]
+gradient = SubResource("Gradient_018s2")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="ResourcesDisplay" type="VBoxContainer" unique_id=1822500984]
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_ufym4")
+
+[node name="Label" type="Label" parent="." unique_id=2123005504]
+layout_mode = 2
+text = "Resources"
+label_settings = ExtResource("1_018s2")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1620248290]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1998459362]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=681699658]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=822118965]
+layout_mode = 2
+text = "Gold"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=666630093]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1540514734]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_ufym4")
+stretch_mode = 5
+
+[node name="GoldAmount" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=224691981]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+vertical_alignment = 1

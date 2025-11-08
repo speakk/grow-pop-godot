@@ -7,7 +7,8 @@ func _on_in_game_available_plants_changed(available_plants: Array[Plant]) -> voi
 	
 	var i := 0
 	for plant in available_plants:
-		self.add_item(plant.plant_name)
+		var label_text = "%s (%sg)" % [plant.plant_name, plant.get_price()]
+		self.add_item(label_text)
 		self.set_item_metadata(i, plant)
 		
 		i += 1
