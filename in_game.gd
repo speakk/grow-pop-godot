@@ -28,4 +28,10 @@ func start_game():
 	turn_timer.start()
 
 func _on_turn_timer_timeout() -> void:
+	_check_lose_condition()
 	SignalBus.next_turn_start.emit()
+
+func _check_lose_condition():
+	if player_resources.gold == 0 and \
+		get_tree().get_nodes_in_group("plant_instances").is_empty():
+		print("Lost!")

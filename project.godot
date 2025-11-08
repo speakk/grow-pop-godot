@@ -23,6 +23,10 @@ SignalBus="*res://signal_bus.gd"
 
 project/assembly_name="GrowPop"
 
+[global_group]
+
+plant_instances=""
+
 [gui]
 
 theme/custom="uid://birxdig45a404"
