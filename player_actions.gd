@@ -1,3 +1,3 @@
 class_name PlayerActions extends Resource
 
-enum Type { PLANT }
+enum Type { PLANT, HARVEST }

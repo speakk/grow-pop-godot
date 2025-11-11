@@ -6,6 +6,8 @@ var gold: int = 0:
 	set(value):
 		var old_value = gold
 		gold = value
+		if gold < 0:
+			gold = 0
 		gold_changed.emit(old_value, gold)
 
 func initialize_start_game_resources() -> void:

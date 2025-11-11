@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmrg27fd2fjnk"]
+
+[ext_resource type="LabelSettings" uid="uid://dh00kuqhiwhlf" path="res://in_game_ui/thick_label.tres" id="1_p22gt"]
+[ext_resource type="PackedScene" uid="uid://jekspltxusij" path="res://in_game_ui/plant_list.tscn" id="2_hj6bk"]
+
+[node name="PlantSelector" type="VBoxContainer" unique_id=1363500009]
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="." unique_id=756210838]
+layout_mode = 2
+text = "Plants"
+label_settings = ExtResource("1_p22gt")
+
+[node name="PlantList" parent="." unique_id=786901242 instance=ExtResource("2_hj6bk")]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2

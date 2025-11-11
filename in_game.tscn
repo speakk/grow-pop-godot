@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://7ociifiv4r5w" path="res://assets/models/plants/bare_tree.blend" id="3_nvoy2"]
 [ext_resource type="PackedScene" uid="uid://beya1mxvfyo56" path="res://assets/models/plants/oak_tree.blend" id="4_bjxrw"]
 [ext_resource type="PackedScene" uid="uid://8a6mq4vh2hwf" path="res://assets/models/plants/pine_tree.blend" id="5_aud66"]
-[ext_resource type="LabelSettings" uid="uid://dh00kuqhiwhlf" path="res://in_game_ui/thick_label.tres" id="7_aud66"]
-[ext_resource type="PackedScene" uid="uid://jekspltxusij" path="res://in_game_ui/plant_list.tscn" id="7_bjxrw"]
 [ext_resource type="PackedScene" uid="uid://dw3bvdi2mjexj" path="res://in_game_ui/resources_display.tscn" id="7_e5igo"]
 [ext_resource type="PackedScene" uid="uid://07jrafpcx8n3" path="res://in_game_ui/game_over_ui.tscn" id="7_ywj4u"]
+[ext_resource type="PackedScene" uid="uid://bmrg27fd2fjnk" path="res://in_game_ui/plant_selector.tscn" id="9_6cqls"]
 [ext_resource type="Script" uid="uid://c4eha4xtvsdt5" path="res://player_resources.gd" id="10_e5igo"]
+[ext_resource type="PackedScene" uid="uid://xy7r7ykimllc" path="res://in_game_ui/tool_selector.tscn" id="10_ywj4u"]
 [ext_resource type="Script" uid="uid://coqeceooiqtoq" path="res://player_action_handler.gd" id="11_6cqls"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ig7tw"]
@@ -180,17 +180,10 @@ theme_override_constants/margin_bottom = 30
 [node name="ResourcesDisplay" parent="UI/MarginContainer" unique_id=1822500984 instance=ExtResource("7_e5igo")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=1458709373]
+[node name="PlantSelector" parent="UI/MarginContainer" unique_id=1363500009 instance=ExtResource("9_6cqls")]
 layout_mode = 2
-size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer" unique_id=664693969]
-layout_mode = 2
-text = "Plants"
-label_settings = ExtResource("7_aud66")
-
-[node name="PlantList" parent="UI/MarginContainer/VBoxContainer" unique_id=786901242 instance=ExtResource("7_bjxrw")]
-custom_minimum_size = Vector2(200, 200)
+[node name="ToolSelector" parent="UI/MarginContainer" unique_id=1345943330 instance=ExtResource("10_ywj4u")]
 layout_mode = 2
 
 [node name="TurnTimer" type="Timer" parent="." unique_id=2114133274]
@@ -202,5 +195,4 @@ script = ExtResource("10_e5igo")
 script = ExtResource("11_6cqls")
 player_resources = NodePath("../PlayerResources")
 
-[connection signal="plant_selected" from="UI/MarginContainer/VBoxContainer/PlantList" to="." method="_on_plant_list_plant_selected"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerAction" load_steps=3 format=3 uid="uid://car1yw036gxe3"]
+
+[ext_resource type="Texture2D" uid="uid://bmhr0obmn6j3u" path="res://assets/icons/harvest.png" id="1_5354b"]
+[ext_resource type="Script" uid="uid://dcidpqtwsfvmg" path="res://player_action.gd" id="1_wbicy"]
+
+[resource]
+script = ExtResource("1_wbicy")
+name = "Harvest"
+type = 1
+icon = ExtResource("1_5354b")
+metadata/_custom_type_script = "uid://dcidpqtwsfvmg"

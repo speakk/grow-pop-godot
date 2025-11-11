@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerAction" load_steps=3 format=3 uid="uid://d1v7rwuwfkgmu"]
+
+[ext_resource type="Texture2D" uid="uid://cs16uplunda" path="res://assets/icons/plant.png" id="1_7xped"]
+[ext_resource type="Script" uid="uid://dcidpqtwsfvmg" path="res://player_action.gd" id="1_fcigl"]
+
+[resource]
+script = ExtResource("1_fcigl")
+name = "Plant"
+icon = ExtResource("1_7xped")
+metadata/_custom_type_script = "uid://dcidpqtwsfvmg"

@@ -36,6 +36,10 @@ func start_game():
 func _on_turn_timer_timeout() -> void:
 	_check_lose_condition()
 	SignalBus.next_turn_start.emit()
+	_tax_the_player()
+
+func _tax_the_player():
+	player_resources.gold -= 1
 
 func _check_lose_condition():
 	if player_resources.gold == 0 and \
