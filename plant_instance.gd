@@ -1,11 +1,13 @@
 class_name PlantInstance extends Node3D
 
 @export var current_scene_container: Node3D
+@export var animation_player: AnimationPlayer
 
 const BARE_TREE = preload("uid://7ociifiv4r5w")
 
 var _current_plant: Plant = null
 
+var _being_harvested := false
 var _growth_stage_index := 0
 var _matured := false
 var _spoiled := false
@@ -62,7 +64,13 @@ func spoil():
 	current_scene_container.add_child(spoilt_scene)
 	_spoiled = true
 
+func is_being_harvested() -> bool:
+	return _being_harvested
+
 func harvest():
+	animation_player.play("harvest")
+	_being_harvested = true
+	await animation_player.animation_finished
 	queue_free()
 	
 func get_reward():

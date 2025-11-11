@@ -43,6 +43,13 @@ func handle_attempt_to_harvest(plot: Plot):
 	var current_plant = plot.get_current_plant()
 	if !current_plant:
 		return
+		
+	if !current_plant.is_mature():
+		return
+	
+	if current_plant.is_being_harvested():
+		return
+	
 	var reward = current_plant.get_reward()
 	current_plant.harvest()
 	

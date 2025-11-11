@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0q0sx4um0vjv"]
+[gd_scene load_steps=8 format=3 uid="uid://c0q0sx4um0vjv"]
 
 [ext_resource type="Script" uid="uid://dawkmujq6q3g8" path="res://plant_instance.gd" id="1_ooofy"]
 
@@ -15,9 +15,37 @@ emission_energy_multiplier = 8.86
 material = SubResource("StandardMaterial3D_ooofy")
 size = Vector3(0.06, 0.06, 0.06)
 
-[node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container") groups=["plant_instances"]]
+[sub_resource type="Animation" id="Animation_ooofy"]
+resource_name = "harvest"
+length = 0.22
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentSceneContainer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.033333335, 1, 1, 1, 1, 0.2, 1, 1.5, 1.5, 1.5)
+
+[sub_resource type="Animation" id="Animation_lr7tw"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentSceneContainer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pw4cy"]
+_data = {
+&"RESET": SubResource("Animation_lr7tw"),
+&"harvest": SubResource("Animation_ooofy")
+}
+
+[node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container", "animation_player") groups=["plant_instances"]]
 script = ExtResource("1_ooofy")
 current_scene_container = NodePath("CurrentSceneContainer")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="CurrentSceneContainer" type="Node3D" parent="." unique_id=569434203]
 
@@ -28,3 +56,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ooofy")
 draw_pass_1 = SubResource("BoxMesh_lr7tw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=333386833]
+libraries = {
+&"": SubResource("AnimationLibrary_pw4cy")
+}
