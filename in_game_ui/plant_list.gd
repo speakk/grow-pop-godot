@@ -17,4 +17,4 @@ func _on_in_game_available_plants_changed(available_plants: Array[Plant]) -> voi
 		i += 1
 
 func _on_item_selected(index: int) -> void:
-	plant_selected.emit(self.get_item_metadata(index))
+	SignalBus.current_selected_plant_changed.emit(self.get_item_metadata(index))

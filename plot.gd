@@ -61,11 +61,18 @@ func handle_current_selected_plant_changed(plant: Plant):
 	_current_selected_plant = plant
 	
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.pressed:
-			var current_plant := get_current_plant()
-			if current_plant:
-				if current_plant.is_mature():
-					SignalBus.player_actions.attempt_to_harvest.emit(self)
-			elif can_plant():
-				SignalBus.player_actions.attempt_to_plant.emit(_current_selected_plant, self)
+	if event is InputEventMouse:
+		if Input.is_action_pressed("primary_player_cation"):
+			SignalBus.plot_clicked.emit(self)
+			#
+	#if event is InputEventMouseButton:
+		#if event.button_index == 1:
+			#print("Clicked")
+		#
+		#if event.button_index == 1 and event.pressed:
+			#var current_plant := get_current_plant()
+			#if current_plant:
+				#if current_plant.is_mature():
+					#SignalBus.player_actions.attempt_to_harvest.emit(self)
+			#elif can_plant():
+				#SignalBus.player_actions.attempt_to_plant.emit(_current_selected_plant, self)
