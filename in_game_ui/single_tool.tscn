@@ -5,7 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://dw661po11qegf" path="res://in_game_ui/single_tool_label.tres" id="3_q2l76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3wq1"]
-bg_color = Color(0.70846266, 0.6398723, 0.765625, 1)
+bg_color = Color(0.8774439, 0.7901843, 0.9453125, 1)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
@@ -17,6 +17,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_l3wq1")
 script = ExtResource("2_l3wq1")
+_active_color = Color(0.92527455, 0.94921875, 0.6969735, 1)
+_inactive_color = Color(0.16534738, 0.1796875, 0.14294632, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=731931836]
 layout_mode = 2

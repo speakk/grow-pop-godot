@@ -17,3 +17,4 @@ class PlayerResourceSignals:
 class PlayerActionSignals:
 	signal attempt_to_plant(plant: Plant, plot: Plot)
 	signal attempt_to_harvest(plot: Plot)
+	signal action_set_active(action: PlayerAction)
