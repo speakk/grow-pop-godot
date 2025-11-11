@@ -2,6 +2,7 @@ class_name PlantInstance extends Node3D
 
 @export var current_scene_container: Node3D
 @export var animation_player: AnimationPlayer
+@export var harvest_particles: GPUParticles3D
 
 const BARE_TREE = preload("uid://7ociifiv4r5w")
 
@@ -70,6 +71,11 @@ func is_being_harvested() -> bool:
 func harvest():
 	animation_player.play("harvest")
 	_being_harvested = true
+	
+	harvest_particles.emitting = true
+	remove_child(harvest_particles)
+	get_parent().get_parent().add_child(harvest_particles)
+	
 	await animation_player.animation_finished
 	queue_free()
 	

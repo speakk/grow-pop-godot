@@ -34,10 +34,11 @@ func handle_next_turn_start() -> void:
 func try_to_grow_plant() -> void:
 	if plant_container.get_child_count() == 0:
 		return
-		
-	var plant_instance := plant_container.get_child(0) as PlantInstance
-	if has_growth_conditions():
-		plant_instance.grow()
+	
+	var child = plant_container.get_child(0)
+	if child is PlantInstance:
+		if has_growth_conditions():
+			child.grow()
 
 func has_growth_conditions() -> bool:
 	return true

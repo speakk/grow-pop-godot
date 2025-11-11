@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0q0sx4um0vjv"]
+[gd_scene load_steps=10 format=3 uid="uid://c0q0sx4um0vjv"]
 
 [ext_resource type="Script" uid="uid://dawkmujq6q3g8" path="res://plant_instance.gd" id="1_ooofy"]
 
@@ -42,10 +42,20 @@ _data = {
 &"harvest": SubResource("Animation_ooofy")
 }
 
-[node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container", "animation_player") groups=["plant_instances"]]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lr7tw"]
+direction = Vector3(0, 1, 0)
+spread = 112.364
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_pw4cy"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container", "animation_player", "harvest_particles") groups=["plant_instances"]]
 script = ExtResource("1_ooofy")
 current_scene_container = NodePath("CurrentSceneContainer")
 animation_player = NodePath("AnimationPlayer")
+harvest_particles = NodePath("HarvestParticles")
 
 [node name="CurrentSceneContainer" type="Node3D" parent="." unique_id=569434203]
 
@@ -61,3 +71,13 @@ draw_pass_1 = SubResource("BoxMesh_lr7tw")
 libraries = {
 &"": SubResource("AnimationLibrary_pw4cy")
 }
+
+[node name="HarvestParticles" type="GPUParticles3D" parent="." unique_id=127770628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9388665, 0)
+emitting = false
+amount = 20
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lr7tw")
+draw_pass_1 = SubResource("BoxMesh_pw4cy")
