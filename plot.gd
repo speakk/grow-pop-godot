@@ -57,9 +57,13 @@ func handle_current_selected_plant_changed(plant: Plant):
 	for child in plant_preview_container.get_children():
 		child.queue_free()
 	
-	var new_plant_scene = plant.growth_stages.back().scene.instantiate()
-	plant_preview_container.add_child(new_plant_scene)
 	_current_selected_plant = plant
+	
+	if !_current_selected_plant:
+		return
+		
+	var new_plant_scene = _current_selected_plant.growth_stages.front().scene.instantiate()
+	plant_preview_container.add_child(new_plant_scene)
 	
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouse:

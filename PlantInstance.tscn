@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0q0sx4um0vjv"]
+[gd_scene load_steps=12 format=3 uid="uid://c0q0sx4um0vjv"]
 
 [ext_resource type="Script" uid="uid://dawkmujq6q3g8" path="res://plant_instance.gd" id="1_ooofy"]
 
@@ -15,6 +15,16 @@ emission_energy_multiplier = 8.86
 material = SubResource("StandardMaterial3D_ooofy")
 size = Vector3(0.06, 0.06, 0.06)
 
+[sub_resource type="Animation" id="Animation_lr7tw"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentSceneContainer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
 [sub_resource type="Animation" id="Animation_ooofy"]
 resource_name = "harvest"
 length = 0.22
@@ -25,16 +35,6 @@ tracks/0/path = NodePath("CurrentSceneContainer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0.033333335, 1, 1, 1, 1, 0.2, 1, 1.5, 1.5, 1.5)
-
-[sub_resource type="Animation" id="Animation_lr7tw"]
-length = 0.001
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CurrentSceneContainer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pw4cy"]
 _data = {
@@ -50,6 +50,17 @@ initial_velocity_max = 1.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_pw4cy"]
 size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lr7tw"]
+albedo_color = Color(0.41662526, 1, 0.28536707, 1)
+emission_enabled = true
+emission = Color(0.4451371, 0.8847656, 0.3925967, 1)
+emission_energy_multiplier = 4.24
+
+[sub_resource type="SphereMesh" id="SphereMesh_pw4cy"]
+material = SubResource("StandardMaterial3D_lr7tw")
+radius = 0.05
+height = 0.1
 
 [node name="PlantInstance" type="Node3D" unique_id=938859517 node_paths=PackedStringArray("current_scene_container", "animation_player", "harvest_particles") groups=["plant_instances"]]
 script = ExtResource("1_ooofy")
@@ -81,3 +92,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_lr7tw")
 draw_pass_1 = SubResource("BoxMesh_pw4cy")
+
+[node name="MaturedIndicator" type="MeshInstance3D" parent="." unique_id=803204981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3083607, 0, 0.3281498)
+visible = false
+mesh = SubResource("SphereMesh_pw4cy")

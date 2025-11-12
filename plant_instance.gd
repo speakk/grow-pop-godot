@@ -43,6 +43,7 @@ func grow():
 		if not _matured:
 			_matured = true
 			$GPUParticles3D.emitting = true
+			$MaturedIndicator.show()
 		
 		_turns_until_spoiled -= 1
 		if _turns_until_spoiled <= 0:

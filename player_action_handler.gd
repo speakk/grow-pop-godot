@@ -2,7 +2,14 @@ class_name PlayerActionHandler extends Node
 
 @export var player_resources: PlayerResources
 
-var _current_action: PlayerAction
+var _current_action: PlayerAction:
+	set(value):
+		if value != _current_action:
+			if value != preload("res://player_actions/plant.tres"):
+				SignalBus.current_selected_plant_changed.emit(null)
+				
+		_current_action = value
+		
 
 var _current_selected_plant: Plant
 
